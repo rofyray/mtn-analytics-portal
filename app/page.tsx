@@ -1,32 +1,35 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart3, FileText, Zap } from "lucide-react";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BarChart3, ChevronDown, FileText, Zap } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="px-4 py-16 md:py-24">
+      {/* Hero Section - Full Viewport */}
+      <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center px-4 relative">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-6xl font-black mb-6">
             <span className="bg-gradient-to-r from-green-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
               Smart analytics
             </span>{" "}
             <span className="text-foreground">for a</span>{" "}
-            <span className="font-extrabold text-foreground whitespace-nowrap">data-driven world</span>
+            <span className="text-foreground whitespace-nowrap">data-driven world</span>
             {" "}📱📊
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             The ultimate data analytics hub to centralize, visualize, and streamline your insights — all in one powerful platform.
           </p>
         </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronDown className="h-6 w-6 text-muted-foreground" />
+        </div>
       </section>
 
       {/* Section 2: Simple and Easy */}
       <section className="px-4 py-12">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-bold">
+          <h2 className="text-3xl md:text-5xl font-black">
             Finally, a{" "}
             <span className="bg-secondary text-secondary-foreground dark:bg-primary dark:text-primary-foreground px-2 py-0.5 rounded">simple and easy</span>
             {" "}way to access all your dashboards in one place!
@@ -109,7 +112,7 @@ export default function Home() {
                 </div>
                 <CardTitle>Power BI Dashboards</CardTitle>
                 <CardDescription>
-                  Access 8 categories of interactive dashboards including DAF, Digital, Home, MCS, Predictive Analysis, and more.
+                  Access 7 categories of interactive dashboards including DAF, Digital, Home, MCS, Predictive Analysis, and more.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -141,20 +144,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Buttons Section */}
-      <section className="px-4 py-12 mb-16">
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-4xl mx-auto">
-          <Button asChild size="lg" className="w-full sm:w-auto">
-            <Link href="/dashboards">View Dashboards</Link>
-          </Button>
-          <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-            <Link href="/submit-request">Submit Request</Link>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-            <Link href="/login">Admin Portal</Link>
-          </Button>
+      {/* Footer */}
+      <footer className="border-t bg-card text-card-foreground">
+        <div className="container px-4 py-8 mx-auto text-center space-y-2">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} LynxSphynx Co. All rights reserved.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Made with 💛 in Ghana 🇬🇭
+          </p>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

@@ -91,7 +91,7 @@ export function RequestForm({ departments, requestTypes, onSubmit }: RequestForm
               <Label htmlFor="name">Full Name *</Label>
               <Input
                 id="name"
-                placeholder="Kwame Nkrumah"
+                placeholder="Geoffrey Okyere-Forson"
                 {...register("name")}
                 disabled={isSubmitting}
               />
@@ -106,7 +106,7 @@ export function RequestForm({ departments, requestTypes, onSubmit }: RequestForm
               <Input
                 id="email"
                 type="email"
-                placeholder="kwame.nkrumah@mtn.com"
+                placeholder="geoffery.okyere-forson@mtn.com"
                 {...register("email")}
                 disabled={isSubmitting}
               />

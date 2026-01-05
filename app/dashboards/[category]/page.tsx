@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card"
 import {
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Menu,
   PanelLeft,
   X,
@@ -85,6 +86,7 @@ export default function DashboardCategoryPage() {
   const [selectedDashboard, setSelectedDashboard] = useState<Dashboard | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
+  const [headerCollapsed, setHeaderCollapsed] = useState(false)
 
   const categoryData = (dashboardsConfig as Record<string, DashboardCategory>)[category]
 
@@ -325,33 +327,54 @@ export default function DashboardCategoryPage() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Bar with Dashboard Title */}
-        <div className="border-b bg-card">
-          <div className="container px-4 py-4 flex items-center justify-between">
-            {/* Left: Dashboard Title */}
-            <div>
-              <h1 className="text-2xl font-bold mb-1">
-                {selectedDashboard?.name || categoryData.dashboards[0]?.name || "Dashboard"}
-              </h1>
-              <p className="text-sm text-muted-foreground">
-                {categoryData.name}
-              </p>
-            </div>
+        {/* Top Bar with Dashboard Title - Collapsible */}
+        {!headerCollapsed && (
+          <div className="border-b bg-card transition-all duration-300">
+            <div className="container px-4 py-4 flex items-center justify-between">
+              {/* Left: Dashboard Title */}
+              <div>
+                <h1 className="text-2xl font-bold">
+                  {selectedDashboard?.name || categoryData.dashboards[0]?.name || "Dashboard"}
+                </h1>
+              </div>
 
-            {/* Right: Mobile Menu */}
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="md:hidden"
-            >
-              <PanelLeft className="h-5 w-5" />
-            </Button>
+              {/* Right: Collapse Button and Mobile Menu */}
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setHeaderCollapsed(true)}
+                  title="Collapse header"
+                >
+                  <ChevronDown className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setSidebarOpen(!sidebarOpen)}
+                  className="md:hidden"
+                >
+                  <PanelLeft className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Dashboard Iframe */}
         <div className="flex-1 relative bg-muted/50">
+          {/* Floating Expand Button when header is collapsed */}
+          {headerCollapsed && (
+            <Button
+              variant="secondary"
+              size="icon"
+              onClick={() => setHeaderCollapsed(false)}
+              className="absolute top-2 left-2 z-20 bg-background/80 backdrop-blur-sm hover:bg-background shadow-md"
+              title="Expand header"
+            >
+              <ChevronDown className="h-5 w-5 rotate-180 text-foreground" />
+            </Button>
+          )}
           {selectedDashboard ? (
             <>
               {isLoading && (

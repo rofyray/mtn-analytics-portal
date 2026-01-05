@@ -153,7 +153,7 @@ export default function SubmitRequestPage() {
                 </Label>
                 <Input
                   id="name"
-                  placeholder="Kwame Nkrumah"
+                  placeholder="Geoffrey Okyere-Forson"
                   {...register("name")}
                   disabled={isSubmitting}
                   aria-invalid={!!errors.name}
@@ -171,7 +171,7 @@ export default function SubmitRequestPage() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="kwame.nkrumah@mtn.com"
+                  placeholder="geoffery.okyere-forson@mtn.com"
                   {...register("email")}
                   disabled={isSubmitting}
                   aria-invalid={!!errors.email}

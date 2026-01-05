@@ -31,31 +31,20 @@ export function AdminSelector({
   disabled = false,
 }: AdminSelectorProps) {
   const [selectedAdminId, setSelectedAdminId] = useState<string>("")
-  const [isManualEmail, setIsManualEmail] = useState(false)
 
   useEffect(() => {
     // Check if current email matches any admin
     const matchingAdmin = admins.find((admin) => admin.email === selectedEmail)
     if (matchingAdmin) {
       setSelectedAdminId(matchingAdmin.id)
-      setIsManualEmail(false)
-    } else if (selectedEmail) {
-      setIsManualEmail(true)
     }
   }, [selectedEmail, admins])
 
   const handleAdminSelect = (adminId: string) => {
-    if (adminId === "custom") {
-      setIsManualEmail(true)
-      setSelectedAdminId("")
-      onEmailChange("")
-    } else {
-      const admin = admins.find((a) => a.id === adminId)
-      if (admin) {
-        setSelectedAdminId(adminId)
-        setIsManualEmail(false)
-        onEmailChange(admin.email)
-      }
+    const admin = admins.find((a) => a.id === adminId)
+    if (admin) {
+      setSelectedAdminId(adminId)
+      onEmailChange(admin.email)
     }
   }
 
@@ -65,12 +54,12 @@ export function AdminSelector({
       <div className="space-y-2">
         <Label htmlFor="admin-select">Select Admin</Label>
         <Select
-          value={isManualEmail ? "custom" : selectedAdminId}
+          value={selectedAdminId}
           onValueChange={handleAdminSelect}
           disabled={disabled}
         >
           <SelectTrigger id="admin-select">
-            <SelectValue placeholder="Choose an admin or enter custom email" />
+            <SelectValue placeholder="Choose an admin" />
           </SelectTrigger>
           <SelectContent>
             {admins.map((admin) => (
@@ -81,34 +70,22 @@ export function AdminSelector({
                 </div>
               </SelectItem>
             ))}
-            <SelectItem value="custom">
-              <span className="text-muted-foreground">Custom Email...</span>
-            </SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      {/* Email Input */}
+      {/* Email Display */}
       <div className="space-y-2">
         <Label htmlFor="email-input">Email Address</Label>
         <Input
           id="email-input"
           type="email"
-          placeholder="admin@mtn.com"
+          placeholder="Select an admin above"
           value={selectedEmail}
-          onChange={(e) => {
-            setIsManualEmail(true)
-            setSelectedAdminId("")
-            onEmailChange(e.target.value)
-          }}
+          readOnly
           disabled={disabled}
-          className={!isManualEmail ? "bg-muted" : ""}
+          className="bg-muted"
         />
-        {!isManualEmail && selectedEmail && (
-          <p className="text-xs text-muted-foreground">
-            Email auto-filled from selected admin
-          </p>
-        )}
       </div>
     </div>
   )

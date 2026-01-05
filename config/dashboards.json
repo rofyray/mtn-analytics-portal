@@ -3,39 +3,14 @@
     "name": "DAF & WAR Room",
     "dashboards": [
       {
-        "id": "daf-overview",
-        "name": "DAF Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_DAF_OVERVIEW"
+        "id": "daf-dashboard",
+        "name": "DAF Dashboard",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=918086e8-4aad-4d2b-a028-570c968bb763&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       },
       {
-        "id": "war-room",
-        "name": "WAR Room Dashboard",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_WAR_ROOM"
-      },
-      {
-        "id": "distribution-analytics",
-        "name": "Distribution Analytics",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_DISTRIBUTION"
-      }
-    ]
-  },
-  "digital": {
-    "name": "Digital",
-    "dashboards": [
-      {
-        "id": "digital-overview",
-        "name": "Digital Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_DIGITAL_OVERVIEW"
-      },
-      {
-        "id": "online-channels",
-        "name": "Online Channels",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_ONLINE_CHANNELS"
-      },
-      {
-        "id": "app-analytics",
-        "name": "Mobile App Analytics",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_APP_ANALYTICS"
+        "id": "warroom-dashboard",
+        "name": "WarRoom Dashboard",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=494720ad-87a0-4de9-bd54-e0c2fc037e46&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       }
     ]
   },
@@ -43,14 +18,14 @@
     "name": "Home",
     "dashboards": [
       {
-        "id": "home-overview",
-        "name": "Home Services Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_HOME_OVERVIEW"
+        "id": "home-operations",
+        "name": "Home Operations Dashboard",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=096b38a4-f85f-4b00-a8f0-1121636e9d97&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       },
       {
-        "id": "home-products",
-        "name": "Home Products",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_HOME_PRODUCTS"
+        "id": "home-new",
+        "name": "Home New Dashboard",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=ed38546e-4f83-44fa-bf88-2648f5f3f964&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       }
     ]
   },
@@ -58,14 +33,9 @@
     "name": "MCS",
     "dashboards": [
       {
-        "id": "mcs-overview",
-        "name": "MCS Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_MCS_OVERVIEW"
-      },
-      {
-        "id": "customer-services",
-        "name": "Customer Services",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_CUSTOMER_SERVICES"
+        "id": "district-segmentation",
+        "name": "District Segmentation",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=7cedd09a-b863-4a24-be63-8239419ef3a1&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=false&actionBarEnabled=true"
       }
     ]
   },
@@ -73,19 +43,39 @@
     "name": "Predictive Analysis",
     "dashboards": [
       {
-        "id": "predictive-overview",
-        "name": "Predictive Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_PREDICTIVE_OVERVIEW"
+        "id": "ads-drivers",
+        "name": "ADS Drivers",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=a1bbdd80-ab6c-448b-a0a2-ad9e12290ded&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       },
       {
-        "id": "forecasting",
-        "name": "Sales Forecasting",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_FORECASTING"
+        "id": "district-ads-segmentation",
+        "name": "District Level ADS Segmentation",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=6c7c000e-53d4-40c2-b9e4-8933a22c9f0d&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       },
       {
-        "id": "churn-prediction",
-        "name": "Churn Prediction",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_CHURN"
+        "id": "generations-by-region",
+        "name": "Generations by Region",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=d720414b-2ff8-45ac-a9a9-96d543393fcf&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "gross-adds",
+        "name": "Gross Adds",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=c105ba17-6c99-4916-8531-f1593a69d53c&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=false&actionBarEnabled=true"
+      },
+      {
+        "id": "home-dashboard",
+        "name": "Home Dashboard",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=ed38546e-4f83-44fa-bf88-2648f5f3f964&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "south-east-segmentation",
+        "name": "South East Segmentation",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=94a62e61-8a03-4da5-8a57-8eac0b309442&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "recharge-drivers",
+        "name": "Recharge Drivers",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=acfd02f2-9da3-4466-9185-78bb7137bc42&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       }
     ]
   },
@@ -93,14 +83,19 @@
     "name": "REx",
     "dashboards": [
       {
-        "id": "rex-overview",
-        "name": "REx Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_REX_OVERVIEW"
+        "id": "momo-agent-sim",
+        "name": "MoMo Agent SIM Utilization",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=3e6947c6-0803-469a-abcf-214043056fa0&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       },
       {
-        "id": "retail-experience",
-        "name": "Retail Experience",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_RETAIL_EXPERIENCE"
+        "id": "rex-cluster",
+        "name": "REx Cluster",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=e2e2b840-ece1-4757-8fbc-93c3ec88b8c4&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "rex-daf",
+        "name": "REx DAF",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=28ef579c-bba0-4552-b9d7-6f2e91453375&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       }
     ]
   },
@@ -108,14 +103,49 @@
     "name": "Regional Sales",
     "dashboards": [
       {
-        "id": "regional-overview",
-        "name": "Regional Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_REGIONAL_OVERVIEW"
+        "id": "aad-productivity",
+        "name": "AAD Productivity",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=ba3ce8f2-0f77-4f4e-8290-82b792a30fd2&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       },
       {
-        "id": "regional-performance",
-        "name": "Regional Performance",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_REGIONAL_PERFORMANCE"
+        "id": "ads-2025",
+        "name": "ADS 2025",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=0bc27952-84f7-4665-9fd4-031b35f72906&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "ads-dashboard",
+        "name": "ADS Dashboard",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=d94aa502-fa90-44a7-a32c-f746b7684d85&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "channel-partner-mdi",
+        "name": "Channel Partner Report - MDI",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=8de05bed-23c5-4658-9d36-016e18bc4d82&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "cp-access-checker",
+        "name": "CP Access Checker",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=e742c9fc-f482-443e-898f-ed073be7a8d0&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "app-month-zero",
+        "name": "App Month Zero",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=3f3e2e6b-0d46-4e03-89d7-996e9eead370&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "regional-market-insights",
+        "name": "Regional Market Insights",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=9470cd66-56a8-4d46-b79b-c95397e033c8&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=false&actionBarEnabled=true"
+      },
+      {
+        "id": "sim-activation-rs",
+        "name": "SIM Activation by RS",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=c607476d-96d2-4111-804f-531b83d2ac07&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "sim-registration-channel",
+        "name": "SIM Registration by Channel",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=88f40d86-98ef-4546-b695-ca0d15a57643&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       }
     ]
   },
@@ -123,19 +153,19 @@
     "name": "Sales Operations",
     "dashboards": [
       {
-        "id": "sales-ops-overview",
-        "name": "Sales Ops Overview",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_SALES_OPS_OVERVIEW"
+        "id": "district-ads-segmentation",
+        "name": "District Level ADS Segmentation",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=a88170c4-ced1-4429-aeac-138aa17c6d53&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=false&actionBarEnabled=true"
       },
       {
-        "id": "sales-performance",
-        "name": "Sales Performance",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_SALES_PERFORMANCE"
+        "id": "districts-segmentation",
+        "name": "Districts Segmentation",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=7cedd09a-b863-4a24-be63-8239419ef3a1&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=false&actionBarEnabled=true"
       },
       {
-        "id": "operations-kpi",
-        "name": "Operations KPIs",
-        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_OPERATIONS_KPI"
+        "id": "momo-merchant-onboarding",
+        "name": "MoMo Merchant Onboarding",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=d358b151-b96e-447d-9ece-a45533ec533b&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       }
     ]
   }

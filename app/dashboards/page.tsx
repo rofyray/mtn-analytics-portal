@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { BarChart3, Smartphone, Home, Store, TrendingUp, Users, Globe, Briefcase } from "lucide-react"
+import { BarChart3, Home, Store, TrendingUp, Users, Globe, Briefcase } from "lucide-react"
 
 const dashboardCategories = [
   {
@@ -10,14 +10,6 @@ const dashboardCategories = [
     icon: BarChart3,
     color: "text-blue-600",
     bgColor: "bg-blue-50 dark:bg-blue-950",
-  },
-  {
-    id: "digital",
-    name: "Digital",
-    description: "Digital channels and online performance metrics",
-    icon: Smartphone,
-    color: "text-purple-600",
-    bgColor: "bg-purple-50 dark:bg-purple-950",
   },
   {
     id: "home",

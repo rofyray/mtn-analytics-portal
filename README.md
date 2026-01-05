@@ -101,7 +101,7 @@ mtn-analytics-portal/
 ## Key Features
 
 - 🔐 OTP authentication (5-min expiration)
-- 📊 8 Power BI dashboard categories
+- 📊 7 Power BI dashboard categories
 - 📧 Automated email notifications
 - 🔄 Real-time updates (SSE)
 - 📈 CSV exports with date filtering
@@ -116,22 +116,12 @@ mtn-analytics-portal/
 **Build errors:** Run `rm -rf .next && npm run build`
 **Database issues:** Run `npx prisma migrate reset`
 
-## Deployment
-
-```bash
-# Vercel (recommended)
-npm install -g vercel
-vercel
-
-# Or build locally
-npm run build
-npm run start
-```
-
-Set environment variables in Vercel dashboard. For production, use PostgreSQL instead of SQLite.
+For production, use PostgreSQL instead of SQLite.
 
 ---
 
 **Version:** 2.0
+
 **Built with:** Next.js 16.1.1
+
 **License:** © 2026 MTN. All rights reserved.

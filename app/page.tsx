@@ -1,0 +1,160 @@
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BarChart3, FileText, Zap } from "lucide-react";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-green-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
+              Smart analytics
+            </span>{" "}
+            <span className="text-foreground">for a</span>{" "}
+            <span className="font-extrabold text-foreground whitespace-nowrap">data-driven world</span>
+            {" "}📱📊
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            The ultimate data analytics hub to centralize, visualize, and streamline your insights — all in one powerful platform.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 2: Simple and Easy */}
+      <section className="px-4 py-12">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-bold">
+            Finally, a{" "}
+            <span className="bg-secondary text-secondary-foreground dark:bg-primary dark:text-primary-foreground px-2 py-0.5 rounded">simple and easy</span>
+            {" "}way to access all your dashboards in one place!
+          </h2>
+        </div>
+      </section>
+
+      {/* Section 3: Unlock insights */}
+      <section className="px-4 py-12 md:py-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Unlock insights, drive decisions
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Track, analyze, and act on real-time data. Gain instant visibility into your operations and make informed choices without delays.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <img
+              src="/features-1.svg"
+              alt="Data visualization illustration"
+              className="w-full max-w-md"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Your data, visualized */}
+      <section className="px-4 py-12 md:py-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="flex justify-center order-2 md:order-1">
+            <img
+              src="/features-2.svg"
+              alt="Team collaboration illustration"
+              className="w-full max-w-md"
+            />
+          </div>
+          <div className="space-y-4 order-1 md:order-2">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Your data, visualized & simplified
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Transform complex datasets into clear, actionable insights. Beautiful dashboards that tell the story your data wants to share.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Data that speaks */}
+      <section className="px-4 py-12 md:py-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Data that speaks, analytics that work
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              No more guesswork. Get the answers you need, when you need them. Powerful analytics that drive real business outcomes.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <img
+              src="/features-3.svg"
+              alt="Analytics chart illustration"
+              className="w-full max-w-md"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Everything You Need Section */}
+      <section className="px-4 py-16 md:py-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Everything You Need</h2>
+          <div className="flex flex-wrap justify-center gap-6">
+            <Card className="w-full md:w-[calc(33.333%-1rem)] max-w-sm">
+              <CardHeader>
+                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-icon-momo mb-4">
+                  <BarChart3 className="h-6 w-6 icon-momo-blue" />
+                </div>
+                <CardTitle>Power BI Dashboards</CardTitle>
+                <CardDescription>
+                  Access 8 categories of interactive dashboards including DAF, Digital, Home, MCS, Predictive Analysis, and more.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="w-full md:w-[calc(33.333%-1rem)] max-w-sm">
+              <CardHeader>
+                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-icon-momo mb-4">
+                  <FileText className="h-6 w-6 icon-momo-blue" />
+                </div>
+                <CardTitle>Request Analytics</CardTitle>
+                <CardDescription>
+                  Submit requests for new dashboards, custom reports, data analysis, and modifications with real-time tracking.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="w-full md:w-[calc(33.333%-1rem)] max-w-sm">
+              <CardHeader>
+                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-icon-momo mb-4">
+                  <Zap className="h-6 w-6 icon-momo-blue" />
+                </div>
+                <CardTitle>Fast & Efficient</CardTitle>
+                <CardDescription>
+                  Lightning-fast performance with modern architecture, and seamless user experience.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Buttons Section */}
+      <section className="px-4 py-12 mb-16">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-4xl mx-auto">
+          <Button asChild size="lg" className="w-full sm:w-auto">
+            <Link href="/dashboards">View Dashboards</Link>
+          </Button>
+          <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+            <Link href="/submit-request">Submit Request</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+            <Link href="/login">Admin Portal</Link>
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}

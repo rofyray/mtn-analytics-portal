@@ -1,0 +1,142 @@
+{
+  "daf": {
+    "name": "DAF & WAR Room",
+    "dashboards": [
+      {
+        "id": "daf-overview",
+        "name": "DAF Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_DAF_OVERVIEW"
+      },
+      {
+        "id": "war-room",
+        "name": "WAR Room Dashboard",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_WAR_ROOM"
+      },
+      {
+        "id": "distribution-analytics",
+        "name": "Distribution Analytics",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_DISTRIBUTION"
+      }
+    ]
+  },
+  "digital": {
+    "name": "Digital",
+    "dashboards": [
+      {
+        "id": "digital-overview",
+        "name": "Digital Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_DIGITAL_OVERVIEW"
+      },
+      {
+        "id": "online-channels",
+        "name": "Online Channels",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_ONLINE_CHANNELS"
+      },
+      {
+        "id": "app-analytics",
+        "name": "Mobile App Analytics",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_APP_ANALYTICS"
+      }
+    ]
+  },
+  "home": {
+    "name": "Home",
+    "dashboards": [
+      {
+        "id": "home-overview",
+        "name": "Home Services Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_HOME_OVERVIEW"
+      },
+      {
+        "id": "home-products",
+        "name": "Home Products",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_HOME_PRODUCTS"
+      }
+    ]
+  },
+  "mcs": {
+    "name": "MCS",
+    "dashboards": [
+      {
+        "id": "mcs-overview",
+        "name": "MCS Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_MCS_OVERVIEW"
+      },
+      {
+        "id": "customer-services",
+        "name": "Customer Services",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_CUSTOMER_SERVICES"
+      }
+    ]
+  },
+  "predictive": {
+    "name": "Predictive Analysis",
+    "dashboards": [
+      {
+        "id": "predictive-overview",
+        "name": "Predictive Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_PREDICTIVE_OVERVIEW"
+      },
+      {
+        "id": "forecasting",
+        "name": "Sales Forecasting",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_FORECASTING"
+      },
+      {
+        "id": "churn-prediction",
+        "name": "Churn Prediction",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_CHURN"
+      }
+    ]
+  },
+  "rex": {
+    "name": "REx",
+    "dashboards": [
+      {
+        "id": "rex-overview",
+        "name": "REx Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_REX_OVERVIEW"
+      },
+      {
+        "id": "retail-experience",
+        "name": "Retail Experience",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_RETAIL_EXPERIENCE"
+      }
+    ]
+  },
+  "regional": {
+    "name": "Regional Sales",
+    "dashboards": [
+      {
+        "id": "regional-overview",
+        "name": "Regional Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_REGIONAL_OVERVIEW"
+      },
+      {
+        "id": "regional-performance",
+        "name": "Regional Performance",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_REGIONAL_PERFORMANCE"
+      }
+    ]
+  },
+  "sales-ops": {
+    "name": "Sales Operations",
+    "dashboards": [
+      {
+        "id": "sales-ops-overview",
+        "name": "Sales Ops Overview",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_SALES_OPS_OVERVIEW"
+      },
+      {
+        "id": "sales-performance",
+        "name": "Sales Performance",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_SALES_PERFORMANCE"
+      },
+      {
+        "id": "operations-kpi",
+        "name": "Operations KPIs",
+        "url": "https://app.powerbi.com/view?r=PLACEHOLDER_OPERATIONS_KPI"
+      }
+    ]
+  }
+}

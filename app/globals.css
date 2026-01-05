@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 5%;
+    --primary: 48 100% 52%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 198 98% 22%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 48 100% 52%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 48 100% 52%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 197 45% 37%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 48 100% 52%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Brand color utilities - MoMo Blue in light mode, MTN Yellow in dark mode */
+  .icon-momo-blue,
+  .text-brand {
+    @apply text-[#014d6d] dark:text-[#FFCC08];
+  }
+
+  .bg-icon-momo {
+    @apply bg-[#e6f4f8] dark:bg-[#FFCC08]/10;
+  }
+
+  /* Hide native calendar picker icon on date inputs */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  input[type="date"]::-moz-calendar-picker-indicator {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  input[type="date"]::-webkit-clear-button {
+    display: none;
+  }
+}
+
+@layer utilities {
+  /* Enhanced focus styles for keyboard navigation */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+
+  /* Skip to main content link for keyboard users */
+  .skip-to-main {
+    @apply absolute left-[-9999px] z-[999] p-4 bg-primary text-primary-foreground no-underline;
+  }
+
+  .skip-to-main:focus {
+    @apply left-1/2 -translate-x-1/2 top-4;
+  }
+}

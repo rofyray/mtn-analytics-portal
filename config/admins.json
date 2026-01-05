@@ -1,0 +1,17 @@
+[
+  {
+    "id": "admin-1",
+    "name": "Abdul Fatayi",
+    "email": "abdul.fatayi@mtn.com"
+  },
+  {
+    "id": "admin-2",
+    "name": "Isaac Obeng",
+    "email": "isaac.obeng@mtn.com"
+  },
+  {
+    "id": "admin-3",
+    "name": "Geoffrey Okyere-Forson",
+    "email": "geoffery.okyere-forson@mtn.com"
+  }
+]

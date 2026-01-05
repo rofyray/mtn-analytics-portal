@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Request {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  department  String
+  requestType String
+  description String
+  dueDate     DateTime
+  status      String   @default("pending") // pending, assigned, completed
+  completed   Boolean  @default(false)
+
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  assignedAt  DateTime?
+  completedAt DateTime?
+  editedAt    DateTime?
+
+  // Relations
+  assignedTo   Analyst? @relation(fields: [assignedToId], references: [id])
+  assignedToId String?
+
+  // Audit trail
+  editHistory  EditHistory[]
+
+  // Reminder tracking
+  halfReminderSent Boolean @default(false)
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([dueDate])
+  @@index([assignedToId])
+  @@index([email])
+  @@index([completed])
+}
+
+model Analyst {
+  id       String    @id @default(uuid())
+  name     String
+  email    String    @unique
+  active   Boolean   @default(true)
+  requests Request[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  active    Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OTP {
+  id        String   @id @default(uuid())
+  email     String
+  code      String
+  expiresAt DateTime
+
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([expiresAt])
+}
+
+model EditHistory {
+  id        String   @id @default(uuid())
+  requestId String
+  request   Request  @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  editedBy  String
+  oldDate   DateTime
+  newDate   DateTime
+  reason    String
+
+  createdAt DateTime @default(now())
+
+  @@index([requestId])
+}
+
+// Analytics/Stats cache (for dashboard)
+model DailyStats {
+  id              String   @id @default(uuid())
+  date            DateTime @unique
+  totalRequests   Int      @default(0)
+  pendingCount    Int      @default(0)
+  assignedCount   Int      @default(0)
+  completedCount  Int      @default(0)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([date])
+}

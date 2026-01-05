@@ -1,0 +1,47 @@
+[
+  {
+    "id": "analyst-1",
+    "name": "Elvis Mantey",
+    "email": "elvis.mantey@mtn.com"
+  },
+  {
+    "id": "analyst-2",
+    "name": "Geoffrey Okyere-Forson",
+    "email": "geoffery.okyere-forson@mtn.com"
+  },
+  {
+    "id": "analyst-3",
+    "name": "Godwin Ataguruga",
+    "email": "godwin.ataguruga@mtn.com"
+  },
+  {
+    "id": "analyst-4",
+    "name": "Jasmyn Obeng",
+    "email": "jasmyn.obeng@mtn.com"
+  },
+  {
+    "id": "analyst-5",
+    "name": "Maxwell Dogbatse",
+    "email": "maxwell.dogbatse@mtn.com"
+  },
+  {
+    "id": "analyst-6",
+    "name": "Mukadas EkonatuSiibu",
+    "email": "mukadas.ekonatusiibu@mtn.com"
+  },
+  {
+    "id": "analyst-7",
+    "name": "Prince Agyapong",
+    "email": "prince.agyapong@mtn.com"
+  },
+  {
+    "id": "analyst-8",
+    "name": "Richmond Napor",
+    "email": "richmond.napor@mtn.com"
+  },
+  {
+    "id": "analyst-9",
+    "name": "Simon-Peter Diawuo",
+    "email": "simon-peter.diawuo@mtn.com"
+  }
+]

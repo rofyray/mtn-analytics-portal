@@ -53,7 +53,21 @@ export async function GET(request: NextRequest) {
       "Completed",
     ]
 
-    const rows = requests.map((req) => [
+    const rows = requests.map((req: {
+      id: string
+      name: string
+      email: string
+      department: string
+      requestType: string
+      description: string
+      status: string
+      assignedTo?: { name: string } | null
+      dueDate: Date
+      createdAt: Date
+      assignedAt?: Date | null
+      completedAt?: Date | null
+      completed: boolean
+    }) => [
       req.id,
       req.name,
       req.email,
@@ -72,7 +86,7 @@ export async function GET(request: NextRequest) {
     // Build CSV content
     const csvContent = [
       headers.join(","),
-      ...rows.map((row) => row.join(",")),
+      ...rows.map((row: string[]) => row.join(",")),
     ].join("\n")
 
     // Return CSV file

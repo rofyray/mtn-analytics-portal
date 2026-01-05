@@ -32,9 +32,9 @@ export async function GET(request: NextRequest) {
           // Calculate stats
           const stats = {
             total: requests.length,
-            pending: requests.filter((r) => r.status === "pending").length,
-            assigned: requests.filter((r) => r.status === "assigned").length,
-            completed: requests.filter((r) => r.status === "completed").length,
+            pending: requests.filter((r: { status: string }) => r.status === "pending").length,
+            assigned: requests.filter((r: { status: string }) => r.status === "assigned").length,
+            completed: requests.filter((r: { status: string }) => r.status === "completed").length,
           }
 
           // Send data as SSE event

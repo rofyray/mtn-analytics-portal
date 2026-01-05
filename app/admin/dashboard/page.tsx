@@ -23,19 +23,19 @@ async function getDashboardData() {
   // Calculate statistics
   const stats = {
     total: requests.length,
-    pending: requests.filter((r) => r.status === "pending").length,
-    assigned: requests.filter((r) => r.status === "assigned").length,
-    completed: requests.filter((r) => r.status === "completed").length,
+    pending: requests.filter((r: { status: string }) => r.status === "pending").length,
+    assigned: requests.filter((r: { status: string }) => r.status === "assigned").length,
+    completed: requests.filter((r: { status: string }) => r.status === "completed").length,
   }
 
   // Group by department
-  const byDepartment = requests.reduce((acc, req) => {
+  const byDepartment = requests.reduce((acc: Record<string, number>, req: { department: string }) => {
     acc[req.department] = (acc[req.department] || 0) + 1
     return acc
   }, {} as Record<string, number>)
 
   // Group by request type
-  const byType = requests.reduce((acc, req) => {
+  const byType = requests.reduce((acc: Record<string, number>, req: { requestType: string }) => {
     acc[req.requestType] = (acc[req.requestType] || 0) + 1
     return acc
   }, {} as Record<string, number>)
@@ -52,11 +52,11 @@ async function getDashboardData() {
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
 
   const recentRequests = requests.filter(
-    (r) => new Date(r.createdAt) >= thirtyDaysAgo
+    (r: { createdAt: Date }) => new Date(r.createdAt) >= thirtyDaysAgo
   )
 
   // Group by date
-  const byDate = recentRequests.reduce((acc, req) => {
+  const byDate = recentRequests.reduce((acc: Record<string, number>, req: { createdAt: Date }) => {
     const date = format(new Date(req.createdAt), "dd/MM/yyyy")
     acc[date] = (acc[date] || 0) + 1
     return acc
@@ -65,7 +65,7 @@ async function getDashboardData() {
   const timelineData = Object.entries(byDate)
     .map(([date, count]) => ({
       date,
-      value: count,
+      value: count as number,
     }))
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
@@ -74,9 +74,9 @@ async function getDashboardData() {
     statusData,
     byDepartment: Object.entries(byDepartment).map(([name, value]) => ({
       name,
-      value,
+      value: value as number,
     })),
-    byType: Object.entries(byType).map(([name, value]) => ({ name, value })),
+    byType: Object.entries(byType).map(([name, value]) => ({ name, value: value as number })),
     timelineData,
   }
 }

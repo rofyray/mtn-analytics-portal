@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
-import { Menu, X, LogOut } from "lucide-react"
+import { Menu, X, LogOut, ChevronDown } from "lucide-react"
 import { useSession, signOut } from "next-auth/react"
 import {
   DropdownMenu,
@@ -115,10 +115,11 @@ export function Navbar() {
             <div className="hidden md:block">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-full">
+                  <button className="flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-full">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFCC08] text-black font-semibold hover:opacity-90 transition-opacity">
                       {getInitials(session.user.name)}
                     </div>
+                    <ChevronDown className="h-4 w-4 text-muted-foreground" />
                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">

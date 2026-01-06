@@ -4,6 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { PieChartCard, LineChartCard, BarChartCard } from "@/components/charts"
 import { prisma } from "@/lib/prisma"
 import { format } from "date-fns"
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
+import { authOptions } from "@/lib/auth"
 
 // Force dynamic rendering for admin pages
 export const dynamic = 'force-dynamic'
@@ -82,6 +85,12 @@ async function getDashboardData() {
 }
 
 export default async function DashboardPage() {
+  // Server-side authentication check
+  const session = await getServerSession(authOptions)
+  if (!session) {
+    redirect("/login")
+  }
+
   const data = await getDashboardData()
 
   return (
@@ -172,7 +181,7 @@ export default async function DashboardPage() {
               href="/admin/requests"
               className="flex items-center gap-4 p-4 border rounded-lg hover:bg-accent transition-colors"
             >
-              <FileText className="h-8 w-8 text-primary" />
+              <FileText className="h-8 w-8 icon-momo-blue" />
               <div className="flex-1">
                 <h4 className="font-medium">Manage Requests</h4>
                 <p className="text-sm text-muted-foreground">
@@ -185,7 +194,7 @@ export default async function DashboardPage() {
               href="/admin/reports"
               className="flex items-center gap-4 p-4 border rounded-lg hover:bg-accent transition-colors"
             >
-              <BarChart3 className="h-8 w-8 text-primary" />
+              <BarChart3 className="h-8 w-8 icon-momo-blue" />
               <div className="flex-1">
                 <h4 className="font-medium">Generate Reports</h4>
                 <p className="text-sm text-muted-foreground">

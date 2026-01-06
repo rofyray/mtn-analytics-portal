@@ -90,6 +90,31 @@
     @apply bg-background text-foreground;
     font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
   }
+
+  /* Toast type-specific styling using Sonner's data attributes */
+  [data-sonner-toast][data-type="success"] {
+    background-color: hsl(var(--toast-success-bg)) !important;
+    color: hsl(var(--toast-success-text)) !important;
+    border-color: hsl(var(--toast-success-border)) !important;
+  }
+
+  [data-sonner-toast][data-type="error"] {
+    background-color: hsl(var(--toast-error-bg)) !important;
+    color: hsl(var(--toast-error-text)) !important;
+    border-color: hsl(var(--toast-error-border)) !important;
+  }
+
+  [data-sonner-toast][data-type="warning"] {
+    background-color: hsl(var(--toast-warning-bg)) !important;
+    color: hsl(var(--toast-warning-text)) !important;
+    border-color: hsl(var(--toast-warning-border)) !important;
+  }
+
+  [data-sonner-toast][data-type="info"] {
+    background-color: hsl(var(--toast-info-bg)) !important;
+    color: hsl(var(--toast-info-text)) !important;
+    border-color: hsl(var(--toast-info-border)) !important;
+  }
 }
 
 @layer components {

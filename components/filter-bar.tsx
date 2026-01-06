@@ -46,7 +46,7 @@ export function FilterBar({ activeFilter, onFilterChange, counts }: FilterBarPro
               "ml-2 min-w-[1.5rem] justify-center",
               activeFilter === filter.value
                 ? "bg-primary-foreground/20 text-primary-foreground"
-                : "bg-muted"
+                : "bg-muted text-muted-foreground"
             )}
           >
             {counts[filter.value]}

@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     // Build where clause for date filtering
     const where: any = {}
     if (startDate && endDate) {
-      where.dueDate = {
+      where.createdAt = {
         gte: new Date(startDate),
         lte: new Date(endDate),
       }

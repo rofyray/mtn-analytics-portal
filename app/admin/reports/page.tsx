@@ -247,7 +247,7 @@ export default function ReportsPage() {
             <li>Completion Status</li>
           </ul>
           <p className="text-sm text-muted-foreground mt-4">
-            Requests are filtered by their due date falling within the selected date range.
+            Requests are filtered by their creation date falling within the selected date range.
           </p>
         </CardContent>
       </Card>

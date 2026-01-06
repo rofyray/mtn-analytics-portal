@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer"
 
-// Create transporter
+// Create transporter with connection pooling for better performance
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: parseInt(process.env.SMTP_PORT || "587"),
@@ -9,7 +9,25 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD,
   },
+  // Connection pooling - keeps connections alive and reuses them
+  pool: true,
+  maxConnections: 5,
+  maxMessages: 100,
+  rateDelta: 1000,
+  rateLimit: 5,
 })
+
+// Verify SMTP connection (can be called on startup for debugging)
+export async function verifyEmailConnection() {
+  try {
+    await transporter.verify()
+    console.log("SMTP connection verified successfully")
+    return { success: true }
+  } catch (error) {
+    console.error("SMTP connection verification failed:", error)
+    return { success: false, error }
+  }
+}
 
 // Send OTP email
 export async function sendOTPEmail(email: string, otp: string) {
@@ -123,16 +141,16 @@ export async function sendRequestNotification(
               <h1>New Analytics Request</h1>
             </div>
             <div class="content">
-              <p>A new analytics request has been submitted and requires assignment.</p>
+              <p>New analytics request submitted by <strong>${request.name}</strong> (${request.email})</p>
 
               <div class="info-box">
-                <div class="info-row"><span class="label">Requester:</span> ${request.name}</div>
-                <div class="info-row"><span class="label">Email:</span> ${request.email}</div>
                 <div class="info-row"><span class="label">Department:</span> ${request.department}</div>
-                <div class="info-row"><span class="label">Request Type:</span> ${request.requestType}</div>
-                <div class="info-row"><span class="label">Due Date:</span> ${new Date(request.dueDate).toLocaleDateString()}</div>
+                <div class="info-row"><span class="label">Type:</span> ${request.requestType}</div>
+                <div class="info-row"><span class="label">Due:</span> ${new Date(request.dueDate).toLocaleDateString()}</div>
                 <div class="info-row"><span class="label">Description:</span><br>${request.description}</div>
               </div>
+
+              <p>Please log in to the Manager Portal to review and assign.</p>
 
               <div style="text-align: center;">
                 <a href="${process.env.NEXT_PUBLIC_APP_URL}/admin/dashboard" class="button">View in Dashboard</a>
@@ -148,7 +166,14 @@ export async function sendRequestNotification(
     `,
   }
 
-  await transporter.sendMail(mailOptions)
+  try {
+    await transporter.sendMail(mailOptions)
+    console.log(`Admin notification sent to: ${adminEmails}`)
+    return { success: true }
+  } catch (error) {
+    console.error("Error sending admin notification:", error)
+    return { success: false, error }
+  }
 }
 
 // Send confirmation email to requester
@@ -156,7 +181,7 @@ export async function sendConfirmation(request: any) {
   const mailOptions = {
     from: process.env.SMTP_FROM || "MTN Analytics Portal <noreply@mtn.com>",
     to: request.email,
-    subject: "Request Received - MTN Analytics Portal",
+    subject: `Request Received - ${request.requestType}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -215,7 +240,14 @@ export async function sendConfirmation(request: any) {
     `,
   }
 
-  await transporter.sendMail(mailOptions)
+  try {
+    await transporter.sendMail(mailOptions)
+    console.log(`Confirmation email sent to: ${request.email}`)
+    return { success: true }
+  } catch (error) {
+    console.error("Error sending confirmation email:", error)
+    return { success: false, error }
+  }
 }
 
 // Send assignment email to analyst
@@ -251,25 +283,20 @@ export async function sendAssignmentEmail(
               <h1>New Request Assigned</h1>
             </div>
             <div class="content">
-              <p>Hello ${analyst.name},</p>
-              <p>A new analytics request has been assigned to you.</p>
+              <p>You have been assigned a new analytics task:</p>
 
               <div class="info-box">
-                <h3 style="margin-top: 0; color: #014d6d;">Request Details</h3>
-                <div class="info-row"><span class="label">Requester:</span> ${request.name}</div>
-                <div class="info-row"><span class="label">Email:</span> ${request.email}</div>
+                <div class="info-row"><span class="label">Type:</span> ${request.requestType}</div>
                 <div class="info-row"><span class="label">Department:</span> ${request.department}</div>
-                <div class="info-row"><span class="label">Request Type:</span> ${request.requestType}</div>
-                <div class="info-row"><span class="label">Due Date:</span> ${new Date(request.dueDate).toLocaleDateString()}</div>
                 <div class="info-row"><span class="label">Description:</span><br>${request.description}</div>
+                <div class="info-row"><span class="label">Due Date:</span> ${new Date(request.dueDate).toLocaleDateString()}</div>
               </div>
 
               ${
                 notes
                   ? `
               <div class="notes-box">
-                <strong>Admin Notes:</strong><br>
-                ${notes}
+                <strong>Notes:</strong> ${notes}
               </div>
               `
                   : ""
@@ -289,7 +316,14 @@ export async function sendAssignmentEmail(
     `,
   }
 
-  await transporter.sendMail(mailOptions)
+  try {
+    await transporter.sendMail(mailOptions)
+    console.log(`Assignment email sent to: ${analyst.email}`)
+    return { success: true }
+  } catch (error) {
+    console.error("Error sending assignment email:", error)
+    return { success: false, error }
+  }
 }
 
 // Send completion email to requester
@@ -297,7 +331,7 @@ export async function sendCompletionEmail(request: any) {
   const mailOptions = {
     from: process.env.SMTP_FROM || "MTN Analytics Portal <noreply@mtn.com>",
     to: request.email,
-    subject: "Request Completed - MTN Analytics Portal",
+    subject: `Request Completed - ${request.requestType}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -321,22 +355,13 @@ export async function sendCompletionEmail(request: any) {
             </div>
             <div class="content">
               <div class="success-box">
-                Your analytics request has been completed!
+                Your analytics request "${request.requestType}" has been completed.
               </div>
-
-              <p>Dear ${request.name},</p>
-              <p>We're pleased to inform you that your analytics request has been successfully completed.</p>
 
               <div class="info-box">
-                <h3 style="margin-top: 0; color: #28a745;">Request Summary</h3>
-                <div class="info-row"><span class="label">Request Type:</span> ${request.requestType}</div>
-                <div class="info-row"><span class="label">Department:</span> ${request.department}</div>
-                <div class="info-row"><span class="label">Completed Date:</span> ${new Date().toLocaleDateString()}</div>
+                <div class="info-row"><span class="label">Description:</span><br>${request.description}</div>
+                <div class="info-row"><span class="label">Completed on:</span> ${new Date().toLocaleString()}</div>
               </div>
-
-              <p>The analyst assigned to your request will be in touch with the results and deliverables.</p>
-
-              <p>Thank you for using the MTN Analytics Portal. We hope the insights provided will be valuable to your work.</p>
 
               <div class="footer">
                 <p>&copy; ${new Date().getFullYear()} MTN Analytics Portal. All rights reserved.</p>
@@ -348,7 +373,14 @@ export async function sendCompletionEmail(request: any) {
     `,
   }
 
-  await transporter.sendMail(mailOptions)
+  try {
+    await transporter.sendMail(mailOptions)
+    console.log(`Completion email sent to: ${request.email}`)
+    return { success: true }
+  } catch (error) {
+    console.error("Error sending completion email:", error)
+    return { success: false, error }
+  }
 }
 
 // Send date change notification to requester
@@ -361,7 +393,7 @@ export async function sendDateChangeEmail(
   const mailOptions = {
     from: process.env.SMTP_FROM || "MTN Analytics Portal <noreply@mtn.com>",
     to: request.email,
-    subject: "Due Date Updated - MTN Analytics Portal",
+    subject: `Request Due Date Updated - ${request.requestType}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -387,34 +419,23 @@ export async function sendDateChangeEmail(
               <h1>Due Date Updated</h1>
             </div>
             <div class="content">
-              <div class="warning-box">
-                The due date for your request has been updated
-              </div>
+              <p>Y'ello ${request.name},</p>
 
-              <p>Dear ${request.name},</p>
-              <p>The due date for your analytics request has been changed.</p>
+              <p>Your analytics request "${request.requestType}" (Department: ${request.department}) had its due date updated.</p>
 
               <div class="date-change">
-                <div style="margin: 10px 0;">
-                  <span class="old-date">${new Date(oldDate).toLocaleDateString()}</span>
-                  →
-                  <span class="new-date">${new Date(newDate).toLocaleDateString()}</span>
-                </div>
+                <div class="info-row"><span class="label">Old Due Date:</span> <span class="old-date">${new Date(oldDate).toLocaleDateString()}</span></div>
+                <div class="info-row"><span class="label">New Due Date:</span> <span class="new-date">${new Date(newDate).toLocaleDateString()}</span></div>
               </div>
 
               <div class="info-box">
-                <h3 style="margin-top: 0; color: #856404;">Reason for Change</h3>
+                <h3 style="margin-top: 0; color: #856404;">Reason</h3>
                 <p style="margin: 0;">${reason}</p>
               </div>
 
-              <div class="info-box">
-                <h3 style="margin-top: 0; color: #856404;">Request Details</h3>
-                <div class="info-row"><span class="label">Request Type:</span> ${request.requestType}</div>
-                <div class="info-row"><span class="label">Department:</span> ${request.department}</div>
-                <div class="info-row"><span class="label">Status:</span> ${request.status}</div>
-              </div>
+              <p>If you have any concerns, please contact the analytics manager.</p>
 
-              <p>If you have any questions or concerns about this change, please contact your assigned analyst or the admin team.</p>
+              <p>Regards,<br><strong>Analytics Team</strong></p>
 
               <div class="footer">
                 <p>&copy; ${new Date().getFullYear()} MTN Analytics Portal. All rights reserved.</p>
@@ -426,5 +447,12 @@ export async function sendDateChangeEmail(
     `,
   }
 
-  await transporter.sendMail(mailOptions)
+  try {
+    await transporter.sendMail(mailOptions)
+    console.log(`Date change email sent to: ${request.email}`)
+    return { success: true }
+  } catch (error) {
+    console.error("Error sending date change email:", error)
+    return { success: false, error }
+  }
 }

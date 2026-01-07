@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse, after } from "next/server"
 import { getServerSession } from "next-auth"
 import { prisma } from "@/lib/prisma"
 import { z } from "zod"
@@ -67,10 +67,14 @@ export async function PATCH(
       },
     })
 
-    // Send date change email to requester (async, don't wait)
-    sendDateChangeEmail(updatedRequest, oldDate, newDate, reason).catch((err) =>
-      console.error("Failed to send date change email:", err)
-    )
+    // Send date change email after response is sent (serverless-safe)
+    after(async () => {
+      try {
+        await sendDateChangeEmail(updatedRequest, oldDate, newDate, reason)
+      } catch (err) {
+        console.error("Failed to send date change email:", err)
+      }
+    })
 
     return NextResponse.json({
       success: true,

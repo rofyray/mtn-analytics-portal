@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer"
 
-// Create transporter with connection pooling for better performance
+// Create transporter optimized for serverless environments
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: parseInt(process.env.SMTP_PORT || "587"),
@@ -9,12 +9,10 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASSWORD,
   },
-  // Connection pooling - keeps connections alive and reuses them
-  pool: true,
-  maxConnections: 5,
-  maxMessages: 100,
-  rateDelta: 1000,
-  rateLimit: 5,
+  // Serverless-friendly timeouts (no connection pooling)
+  connectionTimeout: 10000,
+  greetingTimeout: 10000,
+  socketTimeout: 30000,
 })
 
 // Verify SMTP connection (can be called on startup for debugging)

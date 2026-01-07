@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse, after } from "next/server"
 import { getServerSession } from "next-auth"
 import { prisma } from "@/lib/prisma"
 import { z } from "zod"
@@ -79,15 +79,17 @@ export async function POST(request: NextRequest) {
       select: { email: true, name: true },
     })
 
-    // Send notification emails to admins (async, don't wait)
-    sendRequestNotification(newRequest, admins).catch((err) =>
-      console.error("Failed to send admin notifications:", err)
-    )
-
-    // Send confirmation email to requester (async, don't wait)
-    sendConfirmation(newRequest).catch((err) =>
-      console.error("Failed to send confirmation email:", err)
-    )
+    // Send notification emails after response is sent (serverless-safe)
+    after(async () => {
+      try {
+        await Promise.all([
+          sendRequestNotification(newRequest, admins),
+          sendConfirmation(newRequest),
+        ])
+      } catch (err) {
+        console.error("Failed to send notification emails:", err)
+      }
+    })
 
     return NextResponse.json(
       {

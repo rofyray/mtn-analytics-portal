@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse, after } from "next/server"
 import { getServerSession } from "next-auth"
 import { prisma } from "@/lib/prisma"
 import { z } from "zod"
@@ -60,11 +60,15 @@ export async function POST(
       },
     })
 
-    // Send assignment email to analyst (async, don't wait)
+    // Send assignment email after response is sent (serverless-safe)
     if (analyst.email) {
-      sendAssignmentEmail(updatedRequest, analyst, notes).catch((err) =>
-        console.error("Failed to send assignment email:", err)
-      )
+      after(async () => {
+        try {
+          await sendAssignmentEmail(updatedRequest, analyst, notes)
+        } catch (err) {
+          console.error("Failed to send assignment email:", err)
+        }
+      })
     }
 
     return NextResponse.json({

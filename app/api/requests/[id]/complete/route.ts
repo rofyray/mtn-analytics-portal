@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse, after } from "next/server"
 import { getServerSession } from "next-auth"
 import { prisma } from "@/lib/prisma"
 import { authOptions } from "@/lib/auth"
@@ -46,10 +46,14 @@ export async function POST(
       },
     })
 
-    // Send completion email to requester (async, don't wait)
-    sendCompletionEmail(updatedRequest).catch((err) =>
-      console.error("Failed to send completion email:", err)
-    )
+    // Send completion email after response is sent (serverless-safe)
+    after(async () => {
+      try {
+        await sendCompletionEmail(updatedRequest)
+      } catch (err) {
+        console.error("Failed to send completion email:", err)
+      }
+    })
 
     return NextResponse.json({
       success: true,

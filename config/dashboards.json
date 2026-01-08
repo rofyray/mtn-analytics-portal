@@ -168,5 +168,45 @@
         "url": "https://app.powerbi.com/reportEmbed?reportId=d358b151-b96e-447d-9ece-a45533ec533b&groupId=5ed6f20b-471f-4a5b-8bdf-2334278b6e3a&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
       }
     ]
+  },
+  "digital": {
+    "name": "Digital",
+    "dashboards": [
+      {
+        "id": "ads-drivers-digital",
+        "name": "ADS Drivers",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=a1bbdd80-ab6c-448b-a0a2-ad9e12290ded&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&navContentPaneEnabled=true&actionBarEnabled=true"
+      },
+      {
+        "id": "adwumapa",
+        "name": "AdwumaPa",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=503f285b-ee66-4a2e-959b-07144e15a173&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&actionBarEnabled=true"
+      },
+      {
+        "id": "falcon",
+        "name": "Falcon",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=3a97d404-dad1-4707-bf9f-9152eac7b85f&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&actionBarEnabled=true"
+      },
+      {
+        "id": "momo-malpractice",
+        "name": "MoMo Malpractice",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=0e6b5c0d-9207-45d4-9c84-dc401eff2aaa&autoAuth=true&ctid=c9b9cb50-3644-4db4-a267-fa84df2f4ceb&actionBarEnabled=true"
+      }
+    ]
+  },
+  "reports": {
+    "name": "Reports",
+    "dashboards": [
+      {
+        "id": "report-placeholder-1",
+        "name": "Report 1",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=[reportID]&autoAuth=true&ctid=[ctID]&actionBarEnabled=true"
+      },
+      {
+        "id": "report-placeholder-2",
+        "name": "Report 2",
+        "url": "https://app.powerbi.com/reportEmbed?reportId=[reportID]&autoAuth=true&ctid=[ctID]&actionBarEnabled=true"
+      }
+    ]
   }
 }

@@ -22,6 +22,7 @@ import {
   MapPin,
   ShoppingCart,
   LayoutDashboard,
+  FileText,
   type LucideIcon,
 } from "lucide-react"
 import Link from "next/link"
@@ -46,6 +47,7 @@ const categoryIcons: Record<string, LucideIcon> = {
   rex: TrendingUp,
   regional: MapPin,
   "sales-ops": ShoppingCart,
+  reports: FileText,
 }
 
 // Function to get icon by dashboard name (fallback logic)

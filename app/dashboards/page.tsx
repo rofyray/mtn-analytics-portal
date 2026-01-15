@@ -29,8 +29,8 @@ const dashboardCategories = [
   },
   {
     id: "predictive",
-    name: "Predictive Analysis",
-    description: "Forecasting and predictive modeling",
+    name: "SAI & DS",
+    description: "Sales AI & Data Science dashboards",
     icon: TrendingUp,
     color: "text-pink-600",
     bgColor: "bg-pink-50 dark:bg-pink-950",

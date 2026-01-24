@@ -19,7 +19,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 // Color palette for charts
 const COLORS = {
-  pending: "#fbbf24", // yellow
+  pending: "#FFCA06", // MTN Y'ello
   assigned: "#3b82f6", // blue
   completed: "#10b981", // green
   primary: "#014d6d",

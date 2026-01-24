@@ -88,7 +88,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-poppins), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-mtn), system-ui, -apple-system, sans-serif;
   }
 
   /* Toast type-specific styling using Sonner's data attributes */
@@ -118,14 +118,17 @@
 }
 
 @layer components {
-  /* Brand color utilities - MoMo Blue in light mode, MTN Yellow in dark mode */
+  /* Brand Colors:
+     - MoMo Blue: #014d6d (light mode)
+     - MTN Y'ello: #FFCA06 (dark mode)
+  */
   .icon-momo-blue,
   .text-brand {
-    @apply text-[#014d6d] dark:text-[#FFCC08];
+    @apply text-[#014d6d] dark:text-[#FFCA06]; /* MoMo Blue / MTN Y'ello */
   }
 
   .bg-icon-momo {
-    @apply bg-[#e6f4f8] dark:bg-[#FFCC08]/10;
+    @apply bg-[#e6f4f8] dark:bg-[#FFCA06]/10; /* MoMo Blue tint / MTN Y'ello tint */
   }
 
   /* Hide native calendar picker icon on date inputs */

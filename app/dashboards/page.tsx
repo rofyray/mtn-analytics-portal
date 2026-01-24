@@ -6,74 +6,56 @@ const dashboardCategories = [
   {
     id: "daf",
     name: "DAF & WAR Room",
-    description: "Distribution and Field Analytics dashboards",
+    description: "Digital Accountability Forum Dashboards and metrics",
     icon: BarChart3,
-    color: "text-blue-600",
-    bgColor: "bg-blue-50 dark:bg-blue-950",
   },
   {
     id: "home",
     name: "Home",
-    description: "Home services and product analytics",
+    description: "Home and Fibre Services and product analytics",
     icon: Home,
-    color: "text-green-600",
-    bgColor: "bg-green-50 dark:bg-green-950",
   },
   {
     id: "mcs",
     name: "MCS",
-    description: "Mobile Customer Services dashboards",
+    description: "MTN Community Shops dashboards",
     icon: Store,
-    color: "text-orange-600",
-    bgColor: "bg-orange-50 dark:bg-orange-950",
   },
   {
     id: "predictive",
     name: "SAI & DS",
-    description: "Sales AI & Data Science dashboards",
+    description: "Sales Analytics, Intelligence & Decision Support dashboards analytics",
     icon: TrendingUp,
-    color: "text-pink-600",
-    bgColor: "bg-pink-50 dark:bg-pink-950",
   },
   {
     id: "rex",
     name: "REx",
     description: "Retail Experience analytics",
     icon: Users,
-    color: "text-cyan-600",
-    bgColor: "bg-cyan-50 dark:bg-cyan-950",
   },
   {
     id: "regional",
     name: "Regional Sales",
     description: "Regional performance and sales metrics",
     icon: Globe,
-    color: "text-indigo-600",
-    bgColor: "bg-indigo-50 dark:bg-indigo-950",
   },
   {
     id: "sales-ops",
     name: "Sales Operations",
     description: "Sales operations and performance tracking",
     icon: Briefcase,
-    color: "text-amber-600",
-    bgColor: "bg-amber-50 dark:bg-amber-950",
   },
   {
     id: "digital",
     name: "Digital",
     description: "Digital analytics and campaigns",
     icon: Smartphone,
-    color: "text-purple-600",
-    bgColor: "bg-purple-50 dark:bg-purple-950",
   },
   {
     id: "reports",
     name: "Reports",
     description: "Custom reports and analytics",
     icon: FileText,
-    color: "text-teal-600",
-    bgColor: "bg-teal-50 dark:bg-teal-950",
   },
 ]
 
@@ -100,8 +82,8 @@ export default function DashboardsPage() {
             >
               <Card className="h-full transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer">
                 <CardHeader>
-                  <div className={`flex items-center justify-center h-14 w-14 rounded-lg ${category.bgColor} mb-4 transition-transform group-hover:scale-110`}>
-                    <Icon className={`h-7 w-7 ${category.color}`} />
+                  <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-icon-momo mb-4 transition-transform group-hover:scale-110">
+                    <Icon className="h-7 w-7 icon-momo-blue" />
                   </div>
                   <CardTitle className="text-xl">{category.name}</CardTitle>
                   <CardDescription className="text-sm">

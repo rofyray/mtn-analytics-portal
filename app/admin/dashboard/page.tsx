@@ -45,7 +45,7 @@ async function getDashboardData() {
 
   // Group by status for pie chart
   const statusData = [
-    { name: "Pending", value: stats.pending, fill: "#fbbf24" },
+    { name: "Pending", value: stats.pending, fill: "#FFCA06" },
     { name: "Assigned", value: stats.assigned, fill: "#3b82f6" },
     { name: "Completed", value: stats.completed, fill: "#10b981" },
   ]

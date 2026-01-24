@@ -8,7 +8,7 @@ export default function Home() {
       <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center px-4 relative">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-4xl md:text-6xl font-black mb-6">
-            <span className="bg-gradient-to-r from-green-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
+            <span className="text-brand">
               Smart analytics
             </span>{" "}
             <span className="text-foreground">for a</span>{" "}

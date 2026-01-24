@@ -116,7 +116,7 @@ export function Navbar() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-full">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFCC08] text-black font-semibold hover:opacity-90 transition-opacity">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFCA06] text-black font-semibold hover:opacity-90 transition-opacity">
                       {getInitials(session.user.name)}
                     </div>
                     <ChevronDown className="h-4 w-4 text-muted-foreground" />
@@ -286,7 +286,7 @@ export function Navbar() {
               {status === "authenticated" && session?.user && (
                 <div className="flex flex-col gap-4 pt-4 border-t mt-4">
                   <div className="flex items-center gap-3 px-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFCC08] text-black font-bold text-lg">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFCA06] text-black font-bold text-lg">
                       {getInitials(session.user.name)}
                     </div>
                     <div className="flex flex-col">

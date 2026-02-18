@@ -8,7 +8,7 @@ export default function Home() {
       <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center px-4 relative overflow-hidden">
         {/* Adinkra symbols background */}
         <div
-          className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+          className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.025]"
           style={{
             maskImage: "url(/adinkra/adinkra_background.svg)",
             WebkitMaskImage: "url(/adinkra/adinkra_background.svg)",
@@ -44,7 +44,7 @@ export default function Home() {
       <section className="relative overflow-hidden px-4 py-12">
         {/* Adinkra pattern overlay fading downward */}
         <div
-          className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+          className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.025]"
           style={{
             maskImage: `url(/adinkra/adinkra_background.svg), linear-gradient(to bottom, black 0%, transparent 95%)`,
             maskSize: "cover, 100% 100%",
@@ -176,7 +176,7 @@ export default function Home() {
       <footer className="border-t bg-card text-card-foreground relative overflow-hidden">
         {/* Left Adinkra pattern */}
         <div
-          className="absolute left-0 inset-y-0 w-1/2 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+          className="absolute left-0 inset-y-0 w-1/2 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.025]"
           style={{
             maskImage: "url(/adinkra/adinkra_background.svg), linear-gradient(to right, black 0%, transparent 70%)",
             WebkitMaskImage: "url(/adinkra/adinkra_background.svg), linear-gradient(to right, black 0%, transparent 70%)",
@@ -190,7 +190,7 @@ export default function Home() {
         />
         {/* Right Adinkra pattern */}
         <div
-          className="absolute right-0 inset-y-0 w-1/2 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+          className="absolute right-0 inset-y-0 w-1/2 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.025]"
           style={{
             maskImage: "url(/adinkra/adinkra_background.svg), linear-gradient(to left, black 0%, transparent 70%)",
             WebkitMaskImage: "url(/adinkra/adinkra_background.svg), linear-gradient(to left, black 0%, transparent 70%)",

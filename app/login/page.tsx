@@ -111,7 +111,7 @@ function LoginContent() {
     <div className="relative overflow-hidden min-h-screen flex items-center justify-center bg-background p-4">
       {/* Adinkra symbols background */}
       <div
-        className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+        className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.025]"
         style={{
           maskImage: "url(/adinkra/adinkra_background.svg)",
           WebkitMaskImage: "url(/adinkra/adinkra_background.svg)",
@@ -235,7 +235,7 @@ export default function LoginPage() {
       <div className="relative overflow-hidden min-h-screen flex items-center justify-center bg-background p-4">
         {/* Adinkra symbols background */}
         <div
-          className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+          className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.025]"
           style={{
             maskImage: "url(/adinkra/adinkra_background.svg)",
             WebkitMaskImage: "url(/adinkra/adinkra_background.svg)",

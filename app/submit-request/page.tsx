@@ -126,7 +126,7 @@ export default function SubmitRequestPage() {
     <div className="relative overflow-hidden min-h-screen bg-background">
       {/* Adinkra symbols background */}
       <div
-        className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.05]"
+        className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.025]"
         style={{
           maskImage: "url(/adinkra/adinkra_background.svg)",
           WebkitMaskImage: "url(/adinkra/adinkra_background.svg)",

@@ -123,7 +123,22 @@ export default function SubmitRequestPage() {
   }
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12">
+    <div className="relative overflow-hidden min-h-screen bg-background">
+      {/* Adinkra symbols background */}
+      <div
+        className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.05]"
+        style={{
+          maskImage: "url(/adinkra/adinkra_background.svg)",
+          WebkitMaskImage: "url(/adinkra/adinkra_background.svg)",
+          maskSize: "cover",
+          WebkitMaskSize: "cover",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
+          maskPosition: "center",
+          WebkitMaskPosition: "center",
+        }}
+      />
+      <div className="relative z-10 container mx-auto max-w-4xl px-4 py-12">
       {/* Page Header */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold tracking-tight mb-4">Submit Analytics Request</h1>
@@ -353,6 +368,7 @@ export default function SubmitRequestPage() {
             analytics@mtn.com
           </a>
         </p>
+      </div>
       </div>
     </div>
   )

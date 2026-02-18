@@ -83,8 +83,8 @@ export function Navbar() {
               }}
             />
             <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight">MTN Analytics Portal</span>
-              <span className="text-xs text-muted-foreground">Data-Driven Insights</span>
+              <span className="text-sm md:text-lg font-bold tracking-tight leading-tight">MTN Ghana Sales & Distribution Division Analytics Portal</span>
+              <span className="hidden md:block text-xs text-muted-foreground">Data-Driven Insights</span>
             </div>
           </div>
         </Link>

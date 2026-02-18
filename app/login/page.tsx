@@ -108,8 +108,22 @@ function LoginContent() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-background to-background p-4">
-      <div className="w-full max-w-md space-y-4">
+    <div className="relative overflow-hidden min-h-screen flex items-center justify-center bg-background p-4">
+      {/* Adinkra symbols background */}
+      <div
+        className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+        style={{
+          maskImage: "url(/adinkra/adinkra_background.svg)",
+          WebkitMaskImage: "url(/adinkra/adinkra_background.svg)",
+          maskSize: "cover",
+          WebkitMaskSize: "cover",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
+          maskPosition: "center",
+          WebkitMaskPosition: "center",
+        }}
+      />
+      <div className="relative z-10 w-full max-w-md space-y-4">
         {/* Login Card */}
         <Card>
           <CardHeader className="space-y-1">
@@ -218,8 +232,22 @@ function LoginContent() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary/10 via-background to-background p-4">
-        <div className="w-full max-w-md">
+      <div className="relative overflow-hidden min-h-screen flex items-center justify-center bg-background p-4">
+        {/* Adinkra symbols background */}
+        <div
+          className="absolute inset-0 z-0 bg-[#014d6d] dark:bg-[#FFCA06] opacity-[0.10]"
+          style={{
+            maskImage: "url(/adinkra/adinkra_background.svg)",
+            WebkitMaskImage: "url(/adinkra/adinkra_background.svg)",
+            maskSize: "cover",
+            WebkitMaskSize: "cover",
+            maskRepeat: "no-repeat",
+            WebkitMaskRepeat: "no-repeat",
+            maskPosition: "center",
+            WebkitMaskPosition: "center",
+          }}
+        />
+        <div className="relative z-10 w-full max-w-md">
           <Card>
             <CardContent className="flex items-center justify-center py-12">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />

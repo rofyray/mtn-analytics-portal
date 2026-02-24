@@ -17,7 +17,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { Switch } from "@/components/ui/switch"
-import { Trash2, Plus, Loader2 } from "lucide-react"
+import { Trash2, Plus, Loader2, ChevronRight, ChevronDown } from "lucide-react"
 import { toast } from "sonner"
 
 type Dashboard = {
@@ -45,6 +45,17 @@ export function ManageDashboardsClient() {
   const [dashboardName, setDashboardName] = useState("")
   const [dashboardUrl, setDashboardUrl] = useState("")
   const [adding, setAdding] = useState(false)
+
+  // Collapse state
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set())
+
+  const toggleCategory = (catId: string) => {
+    setExpandedCategories(prev => {
+      const next = new Set(prev)
+      next.has(catId) ? next.delete(catId) : next.add(catId)
+      return next
+    })
+  }
 
   // Delete state
   const [deleteTarget, setDeleteTarget] = useState<{ categoryId: string; dashboardId: string; name: string } | null>(null)
@@ -262,36 +273,49 @@ export function ManageDashboardsClient() {
           )}
           {categoryEntries.map(([catId, cat]) => (
             <div key={catId}>
-              <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide mb-2">
-                {cat.name} <span className="text-xs font-normal">({catId})</span>
-              </h3>
-              <div className="space-y-1">
-                {cat.dashboards.map((dashboard) => (
-                  <div
-                    key={dashboard.id}
-                    className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-muted/50 group"
-                  >
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium truncate">{dashboard.name}</p>
-                      <p className="text-xs text-muted-foreground font-mono truncate">{dashboard.id}</p>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="shrink-0 text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
-                      onClick={() =>
-                        setDeleteTarget({
-                          categoryId: catId,
-                          dashboardId: dashboard.id,
-                          name: dashboard.name,
-                        })
-                      }
+              <button
+                onClick={() => toggleCategory(catId)}
+                className="flex items-center gap-2 w-full text-left py-2 hover:bg-muted/50 rounded-md px-2 -mx-2"
+              >
+                {expandedCategories.has(catId) ? (
+                  <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0" />
+                ) : (
+                  <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
+                )}
+                <h3 className="font-semibold text-sm tracking-wide">
+                  {cat.name}
+                </h3>
+                <span className="text-xs text-muted-foreground">({cat.dashboards.length})</span>
+              </button>
+              {expandedCategories.has(catId) && (
+                <div className="space-y-1">
+                  {cat.dashboards.map((dashboard) => (
+                    <div
+                      key={dashboard.id}
+                      className="flex items-center justify-between py-2 px-3 rounded-md hover:bg-muted/50 group"
                     >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                ))}
-              </div>
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium truncate">{dashboard.name}</p>
+                        <p className="text-xs text-muted-foreground font-mono truncate">{dashboard.id}</p>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="shrink-0 text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
+                        onClick={() =>
+                          setDeleteTarget({
+                            categoryId: catId,
+                            dashboardId: dashboard.id,
+                            name: dashboard.name,
+                          })
+                        }
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </CardContent>

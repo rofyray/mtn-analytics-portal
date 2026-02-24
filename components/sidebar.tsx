@@ -1,13 +1,15 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useSession } from "next-auth/react"
 import { motion } from "framer-motion"
 import {
   LayoutDashboard,
   FileText,
   BarChart3,
+  Settings,
   ChevronLeft,
   ChevronRight
 } from "lucide-react"
@@ -15,11 +17,13 @@ import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 
+const MANAGE_DASHBOARDS_EMAIL = "geoffery.okyere-forson@mtn.com"
+
 interface SidebarProps {
   className?: string
 }
 
-const menuItems = [
+const baseMenuItems = [
   {
     icon: LayoutDashboard,
     label: "Dashboard",
@@ -40,6 +44,19 @@ const menuItems = [
 export function Sidebar({ className }: SidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const pathname = usePathname()
+  const { data: session } = useSession()
+
+  const menuItems = useMemo(() => {
+    const items = [...baseMenuItems]
+    if (session?.user?.email === MANAGE_DASHBOARDS_EMAIL) {
+      items.push({
+        icon: Settings,
+        label: "Manage Dashboards",
+        href: "/admin/manage-dashboards",
+      })
+    }
+    return items
+  }, [session?.user?.email])
 
   return (
     <TooltipProvider delayDuration={0}>

@@ -1,65 +1,50 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { BarChart3, Home, Store, TrendingUp, Users, Globe, Briefcase, Smartphone, FileText } from "lucide-react"
+import { BarChart3, Home, Store, TrendingUp, Users, Globe, Briefcase, Smartphone, FileText, LayoutDashboard, type LucideIcon } from "lucide-react"
+import { prisma } from "@/lib/prisma"
 
-const dashboardCategories = [
-  {
-    id: "daf",
-    name: "DAF & WAR Room",
-    description: "Digital Accountability Forum Dashboards and metrics",
-    icon: BarChart3,
-  },
-  {
-    id: "home",
-    name: "Home",
-    description: "Home and Fibre Services and product analytics",
-    icon: Home,
-  },
-  {
-    id: "mcs",
-    name: "MCS",
-    description: "MTN Community Shops dashboards",
-    icon: Store,
-  },
-  {
-    id: "predictive",
-    name: "SAI & DS",
-    description: "Sales Analytics, Intelligence & Decision Support dashboards analytics",
-    icon: TrendingUp,
-  },
-  {
-    id: "rex",
-    name: "REx",
-    description: "Retail Experience analytics",
-    icon: Users,
-  },
-  {
-    id: "regional",
-    name: "Regional Sales",
-    description: "Regional performance and sales metrics",
-    icon: Globe,
-  },
-  {
-    id: "sales-ops",
-    name: "Sales Operations",
-    description: "Sales operations and performance tracking",
-    icon: Briefcase,
-  },
-  {
-    id: "digital",
-    name: "Digital",
-    description: "Digital analytics and campaigns",
-    icon: Smartphone,
-  },
-  {
-    id: "reports",
-    name: "Reports",
-    description: "Custom reports and analytics",
-    icon: FileText,
-  },
-]
+export const dynamic = "force-dynamic"
 
-export default function DashboardsPage() {
+const categoryMeta: Record<string, { icon: LucideIcon; description: string }> = {
+  daf: { icon: BarChart3, description: "Digital Accountability Forum Dashboards and metrics" },
+  home: { icon: Home, description: "Home and Fibre Services and product analytics" },
+  mcs: { icon: Store, description: "MTN Community Shops dashboards" },
+  predictive: { icon: TrendingUp, description: "Sales Analytics, Intelligence & Decision Support dashboards analytics" },
+  rex: { icon: Users, description: "Retail Experience analytics" },
+  regional: { icon: Globe, description: "Regional performance and sales metrics" },
+  "sales-ops": { icon: Briefcase, description: "Sales operations and performance tracking" },
+  digital: { icon: Smartphone, description: "Digital analytics and campaigns" },
+  reports: { icon: FileText, description: "Custom reports and analytics" },
+}
+
+type DashboardCategory = {
+  name: string
+  dashboards: { id: string; name: string; url: string }[]
+}
+
+async function getDashboardCategories() {
+  try {
+    const record = await prisma.dashboardConfig.findUnique({
+      where: { id: "main" },
+    })
+    const data = (record?.data ?? {}) as Record<string, DashboardCategory>
+    return Object.entries(data).map(([id, cat]) => {
+      const meta = categoryMeta[id]
+      return {
+        id,
+        name: cat.name,
+        description: meta?.description ?? `${cat.name} dashboards`,
+        icon: meta?.icon ?? LayoutDashboard,
+      }
+    })
+  } catch {
+    return []
+  }
+}
+
+export default async function DashboardsPage() {
+  const dashboardCategories = await getDashboardCategories()
+
   return (
     <div className="relative overflow-hidden min-h-screen bg-background">
       {/* Adinkra symbols background */}

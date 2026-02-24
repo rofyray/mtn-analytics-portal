@@ -12,9 +12,6 @@ import { OTPInput } from "@/components/otp-input"
 import { Loader2 } from "lucide-react"
 import { toast } from "sonner"
 
-// Read admins from config
-import adminsData from "@/config/admins.json"
-
 function LoginContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -25,6 +22,7 @@ function LoginContent() {
   const [otpSent, setOtpSent] = useState(false)
   const [isRequestingOtp, setIsRequestingOtp] = useState(false)
   const [isVerifying, setIsVerifying] = useState(false)
+  const [admins, setAdmins] = useState<{ id: string; name: string; email: string }[]>([])
 
   // Theme management for logo
   const { resolvedTheme } = useTheme()
@@ -32,6 +30,13 @@ function LoginContent() {
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    fetch("/api/admins")
+      .then((res) => res.json())
+      .then((data) => setAdmins(data.admins))
+      .catch((err) => console.error("Failed to fetch admins:", err))
   }, [])
 
   const handleRequestOtp = async () => {
@@ -148,7 +153,7 @@ function LoginContent() {
               <>
                 {/* Email Selection */}
                 <AdminSelector
-                  admins={adminsData}
+                  admins={admins}
                   selectedEmail={email}
                   onEmailChange={setEmail}
                   disabled={isRequestingOtp}

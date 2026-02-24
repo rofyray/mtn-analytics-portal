@@ -95,6 +95,12 @@ model EditHistory {
   @@index([requestId])
 }
 
+model DashboardConfig {
+  id        String   @id @default("main")
+  data      Json
+  updatedAt DateTime @updatedAt
+}
+
 // Analytics/Stats cache (for dashboard)
 model DailyStats {
   id              String   @id @default(uuid())

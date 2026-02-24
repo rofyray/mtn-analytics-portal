@@ -34,9 +34,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-// Import dashboard configuration
-import dashboardsConfig from "@/config/dashboards.json"
-
 // Icon mapping for dashboard categories
 const categoryIcons: Record<string, LucideIcon> = {
   daf: BarChart3,
@@ -89,21 +86,30 @@ export default function DashboardCategoryPage() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
   const [headerCollapsed, setHeaderCollapsed] = useState(false)
-
-  const categoryData = (dashboardsConfig as Record<string, DashboardCategory>)[category]
+  const [categoryData, setCategoryData] = useState<DashboardCategory | null>(null)
 
   useEffect(() => {
-    if (!categoryData) {
-      router.push("/dashboards")
-      return
+    async function fetchDashboards() {
+      try {
+        const res = await fetch("/api/dashboards")
+        const data = await res.json() as Record<string, DashboardCategory>
+        const catData = data[category]
+        if (!catData) {
+          router.push("/dashboards")
+          return
+        }
+        setCategoryData(catData)
+        if (catData.dashboards.length > 0) {
+          setSelectedDashboard(catData.dashboards[0])
+        }
+      } catch {
+        router.push("/dashboards")
+      } finally {
+        setIsLoading(false)
+      }
     }
-
-    // Select first dashboard by default
-    if (categoryData.dashboards.length > 0) {
-      setSelectedDashboard(categoryData.dashboards[0])
-    }
-    setIsLoading(false)
-  }, [category, categoryData, router])
+    fetchDashboards()
+  }, [category, router])
 
   if (!categoryData) {
     return null
